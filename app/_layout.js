@@ -18,7 +18,7 @@ const Layout = () => {
         }
     }, [fontsLoaded]);
 
-    if (err) {
+    if (!fontsLoaded) {
         return null;
     }
 
