@@ -21,15 +21,12 @@ const Home = () => {
                     headerShadowVisible: false,
                     headerTitle: "",
                     headerLeft: () => (
-                        <ScreenHeaderBtn
-                            iconUrl={icons.menu}
-                            deimension="60%"
-                        />
+                        <ScreenHeaderBtn iconUrl={icons.menu} dimension="60%" />
                     ),
                     headerRight: () => (
                         <ScreenHeaderBtn
-                            iconUrl={icons.profile}
-                            deimension="100%"
+                            iconUrl={images.profile}
+                            dimension="100%"
                         />
                     ),
                 }}
