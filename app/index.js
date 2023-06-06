@@ -5,11 +5,12 @@ import { Stack, useRouter } from "expo-router";
 
 import { COLORS, icons, images, SIZES } from "../constants";
 import {
-    NearbyJobs,
+    Nearbyjobs,
     Popularjobs,
     ScreenHeaderBtn,
     Welcome,
 } from "../components";
+import { ScrollView } from "react-native-gesture-handler";
 
 const Home = () => {
     return (
@@ -33,6 +34,13 @@ const Home = () => {
                     ),
                 }}
             />
+            <ScrollView showsVerticalScrollIndicator={false}>
+                <View style={{ flex: 1, padding: SIZES.medium }}>
+                    <Welcome />
+                    <Popularjobs />
+                    <Nearbyjobs />
+                </View>
+            </ScrollView>
         </SafeAreaView>
     );
 };
