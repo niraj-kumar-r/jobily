@@ -1,9 +1,10 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
-import { REACT_APP_RAPID_API_KEY } from "@env";
+import { REACT_APP_RAPID_API_KEY } from "react-native-dotenv";
 import exampleResponse from "../constants/exampleResponse";
 
 const rapidApiKey = REACT_APP_RAPID_API_KEY;
+console.log(rapidApiKey);
 // sometimes it doesn't load if not referenced soon, that's why it's here
 
 const useFetch = (endpoint, query) => {
@@ -26,10 +27,10 @@ const useFetch = (endpoint, query) => {
         setIsLoading(true);
 
         try {
-            // const response = await axios.request(options);
-            const response = exampleResponse;
-            setData(response.data);
+            const response = await axios.request(options);
             console.log(response.data);
+            // const response = exampleResponse;
+            setData(response.data);
             setIsLoading(false);
         } catch (err) {
             setError(err);

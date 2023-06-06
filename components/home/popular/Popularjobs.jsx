@@ -22,8 +22,6 @@ const Popularjobs = () => {
         num_pages: 1,
     });
 
-    // console.log(data, isLoading, error);
-
     return (
         <View style={styles.container}>
             <View style={styles.header}>
