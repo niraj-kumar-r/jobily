@@ -22,6 +22,9 @@ const Popularjobs = () => {
         num_pages: 1,
     });
 
+    const [selectedJob, setSelectedJob] = useState();
+    const handleCardPress = () => {};
+
     return (
         <View style={styles.container}>
             <View style={styles.header}>
@@ -30,6 +33,7 @@ const Popularjobs = () => {
                     <Text style={styles.headerBtn}>Show all</Text>
                 </TouchableOpacity>
             </View>
+
             <View style={styles.cardsContainer}>
                 {isLoading ? (
                     <ActivityIndicator size="large" color={COLORS.primary} />
@@ -39,7 +43,11 @@ const Popularjobs = () => {
                     <FlatList
                         data={data}
                         renderItem={({ item }) => (
-                            <PopularJobCard item={item} />
+                            <PopularJobCard
+                                item={item}
+                                selectedJob={selectedJob}
+                                handleCardPress={handleCardPress}
+                            />
                         )}
                         keyExtractor={(item) => item?.job_id}
                         contentContainerStyle={{ columnGap: SIZES.medium }}
