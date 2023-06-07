@@ -9,6 +9,7 @@ import {
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { Stack, useRouter, useSearchParams } from "expo-router";
+import * as Sharing from "expo-sharing";
 
 import {
     Company,
@@ -41,6 +42,13 @@ const JobDetails = () => {
                             iconUrl={icons.left}
                             dimension="60%"
                             handlePress={() => router.back()}
+                        />
+                    ),
+                    headerRight: () => (
+                        <ScreenHeaderBtn
+                            iconUrl={icons.share}
+                            dimension="60%"
+                            handlePress={() => Sharing.shareAsync(data.url)}
                         />
                     ),
                 }}
