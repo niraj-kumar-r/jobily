@@ -6,6 +6,7 @@ import {
     ScrollView,
     ActivityIndicator,
     RefreshControl,
+    Share,
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { Stack, useRouter, useSearchParams } from "expo-router";
@@ -30,6 +31,16 @@ const JobDetails = () => {
         job_id: params.id,
     });
 
+    const handleShare = async (url) => {
+        try {
+            const result = await Share.share({
+                message: `${url}`,
+            });
+        } catch (sharingError) {
+            alert(sharingError.message);
+        }
+    };
+
     return (
         <SafeAreaView style={{ flex: 1, backgroundColor: COLORS.lightWhite }}>
             <Stack.Screen
@@ -48,7 +59,9 @@ const JobDetails = () => {
                         <ScreenHeaderBtn
                             iconUrl={icons.share}
                             dimension="60%"
-                            handlePress={() => Sharing.shareAsync(data.url)}
+                            handlePress={() =>
+                                handleShare(data[0].job_google_link)
+                            }
                         />
                     ),
                 }}
