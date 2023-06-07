@@ -4,7 +4,6 @@ import { REACT_APP_RAPID_API_KEY } from "react-native-dotenv";
 import exampleResponse from "../constants/exampleResponse";
 
 const rapidApiKey = REACT_APP_RAPID_API_KEY;
-console.log(rapidApiKey);
 // sometimes it doesn't load if not referenced soon, that's why it's here
 
 const useFetch = (endpoint, query) => {
@@ -47,8 +46,6 @@ const useFetch = (endpoint, query) => {
         setIsLoading(true);
         fetchData();
     };
-
     return { data, isLoading, error, refetch };
 };
-
 export default useFetch;
