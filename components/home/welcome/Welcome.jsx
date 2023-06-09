@@ -12,6 +12,7 @@ import { useRouter } from "expo-router";
 
 import styles from "./welcome.style";
 import { icons, SIZES } from "../../../constants";
+import { set } from "react-native-reanimated";
 
 const jobTypes = [
     "Full Time",
@@ -24,6 +25,7 @@ const jobTypes = [
 const Welcome = () => {
     const router = useRouter();
     const [activeJobType, setActiveJobType] = useState("Full Time");
+    const [searchQuery, setSearchQuery] = useState("");
 
     return (
         <View>
@@ -36,8 +38,10 @@ const Welcome = () => {
                 <View style={styles.searchWrapper}>
                     <TextInput
                         style={styles.searchInput}
-                        value=""
-                        onChange={() => {}}
+                        value={searchQuery}
+                        onChangeText={(text) => {
+                            setSearchQuery(text);
+                        }}
                         placeholder="What are you looking for?"
                     />
                 </View>
@@ -60,7 +64,7 @@ const Welcome = () => {
                             style={styles.tab(activeJobType, item)}
                             onPress={() => {
                                 setActiveJobType(item);
-                                router.push(`/search/${item}`);
+                                // router.push(`/search/${item}`);
                             }}
                         >
                             <Text style={styles.tabText(activeJobType, item)}>
