@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { REACT_APP_RAPID_API_KEY } from "react-native-dotenv";
-import exampleResponse from "../constants/exampleResponse";
+import { exampleResponse, jobDetails } from "../constants/exampleResponse";
 
 const rapidApiKey = REACT_APP_RAPID_API_KEY;
 // sometimes it doesn't load if not referenced soon, that's why it's here
@@ -10,6 +10,15 @@ const useFetch = (endpoint, query) => {
     const [data, setData] = useState([]);
     const [isLoading, setIsLoading] = useState(false);
     const [error, setError] = useState(null);
+
+    const handleThisForNow = (endpoint) => {
+        switch (endpoint) {
+            case "job-details":
+                return jobDetails;
+            default:
+                return exampleResponse;
+        }
+    };
 
     const options = {
         method: "GET",
@@ -27,7 +36,7 @@ const useFetch = (endpoint, query) => {
 
         try {
             // const response = await axios.request(options);
-            const response = exampleResponse;
+            const response = handleThisForNow(endpoint);
             setData(response.data);
             setIsLoading(false);
         } catch (err) {
